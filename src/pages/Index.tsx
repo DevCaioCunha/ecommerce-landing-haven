@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Search, ShoppingCart, User, Fire } from "lucide-react";
+import { Search, ShoppingCart, User, Flame } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -98,7 +98,7 @@ const Index = () => {
                     />
                     {product.tag && (
                       <div className="absolute top-4 left-4 bg-white rounded-full px-3 py-1 flex items-center gap-1 shadow-md">
-                        <Fire className="w-4 h-4 text-red-500" />
+                        <Flame className="w-4 h-4 text-red-500" />
                         <span className="text-xs font-medium">{product.tag}</span>
                       </div>
                     )}
