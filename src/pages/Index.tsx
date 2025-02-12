@@ -1,12 +1,37 @@
 
 import { useState } from "react";
-import { Search, ShoppingCart, User } from "lucide-react";
+import { Search, ShoppingCart, User, Fire } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
+
+  const products = [
+    {
+      id: 1,
+      image: "https://source.unsplash.com/random/400x400?healthy,food,fruits",
+      title: "Kit Fitness Premium",
+      description: "Mix de frutas frescas com iogurte natural",
+      tag: "MAIS PESQUISADO",
+      price: "R$ 49,90"
+    },
+    {
+      id: 2,
+      image: "https://source.unsplash.com/random/400x400?protein,smoothie",
+      title: "Protein Shake",
+      description: "Shake proteico com frutas vermelhas",
+      price: "R$ 29,90"
+    },
+    {
+      id: 3,
+      image: "https://source.unsplash.com/random/400x400?salad,healthy",
+      title: "Salada Power",
+      description: "Salada completa com mix de proteínas",
+      price: "R$ 39,90"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -62,17 +87,37 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <Card key={item} className="overflow-hidden group hover:shadow-lg transition-shadow">
-                <div className="relative aspect-square">
-                  <img 
-                    src={`https://source.unsplash.com/random/400x400?product=${item}`}
-                    alt="Product"
-                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <button className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
-                    <Search className="h-4 w-4" />
-                  </button>
+            {products.map((product) => (
+              <Card key={product.id} className="overflow-hidden group hover:shadow-lg transition-shadow">
+                <div className="relative">
+                  <div className="relative aspect-square">
+                    <img 
+                      src={product.image}
+                      alt={product.title}
+                      className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                    {product.tag && (
+                      <div className="absolute top-4 left-4 bg-white rounded-full px-3 py-1 flex items-center gap-1 shadow-md">
+                        <Fire className="w-4 h-4 text-red-500" />
+                        <span className="text-xs font-medium">{product.tag}</span>
+                      </div>
+                    )}
+                    <button className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
+                      <Search className="h-4 w-4" />
+                    </button>
+                  </div>
+                  <div className="p-6 space-y-4">
+                    <div>
+                      <h3 className="font-semibold text-lg">{product.title}</h3>
+                      <p className="text-gray-600 text-sm mt-1">{product.description}</p>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="font-semibold text-lg">{product.price}</span>
+                      <Button className="bg-yellow-500 hover:bg-yellow-600 text-white">
+                        COMPRAR
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </Card>
             ))}
