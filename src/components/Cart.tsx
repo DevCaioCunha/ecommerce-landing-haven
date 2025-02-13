@@ -49,7 +49,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="fixed right-0 top-0 h-screen w-[400px] bg-[#FFF8F3] shadow-lg">
+    <div className="fixed right-0 top-0 h-screen w-[400px] bg-[#FFF8F3] shadow-lg z-[60]">
       <div className="flex flex-col h-full">
         <div className="p-6 border-b">
           <h2 className="text-2xl font-medium">Carrinho de Compras</h2>
