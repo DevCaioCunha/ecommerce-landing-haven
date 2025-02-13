@@ -1,12 +1,13 @@
-
 import { useState } from "react";
 import { Search, ShoppingCart, User, Flame } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Cart from "@/components/Cart";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [showCart, setShowCart] = useState(false);
 
   const products = [
     {
@@ -48,7 +49,10 @@ const Index = () => {
               <a href="#" className="text-gray-700 hover:text-yellow-500 transition-colors">SOBRE NÓS</a>
             </nav>
             <div className="flex items-center space-x-4">
-              <button className="p-2 hover:text-yellow-500 transition-colors">
+              <button 
+                className="p-2 hover:text-yellow-500 transition-colors"
+                onClick={() => setShowCart(!showCart)}
+              >
                 <ShoppingCart className="h-5 w-5" />
               </button>
               <button className="p-2 hover:text-yellow-500 transition-colors">
@@ -164,6 +168,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Cart */}
+      {showCart && <Cart />}
     </div>
   );
 };
