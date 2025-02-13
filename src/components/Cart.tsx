@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Trash2, ChevronUp, ChevronDown } from "lucide-react";
+import { Trash2, ChevronUp, ChevronDown, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +12,11 @@ interface CartItem {
   image: string;
 }
 
-const Cart = () => {
+interface CartProps {
+  onClose?: () => void;
+}
+
+const Cart = ({ onClose }: CartProps) => {
   const [items, setItems] = useState<CartItem[]>([
     {
       id: 1,
@@ -30,7 +34,6 @@ const Cart = () => {
     }
   ]);
 
-  // Controla o scroll do body quando o carrinho está aberto
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -58,14 +61,20 @@ const Cart = () => {
 
   return (
     <>
-      {/* Overlay escuro */}
-      <div className="fixed inset-0 bg-black/50 z-50" />
+      <div className="fixed inset-0 bg-black/50 z-50" onClick={onClose} />
       
-      {/* Carrinho */}
       <div className="fixed right-0 top-0 h-screen w-[400px] bg-[#FFF8F3] shadow-lg z-[60]">
         <div className="flex flex-col h-full">
-          <div className="p-6 border-b">
-            <h2 className="text-2xl font-medium">Carrinho de Compras</h2>
+          <div className="p-6 border-b relative">
+            {onClose && (
+              <button 
+                onClick={onClose}
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 hover:text-red-500 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            )}
+            <h2 className="text-2xl font-medium pr-12">Carrinho de Compras</h2>
           </div>
 
           <div className="flex-1 overflow-auto p-6">
