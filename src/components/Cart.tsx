@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Trash2, ChevronUp, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -30,6 +30,14 @@ const Cart = () => {
     }
   ]);
 
+  // Controla o scroll do body quando o carrinho está aberto
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   const updateQuantity = (id: number, increment: boolean) => {
     setItems(items.map(item => {
       if (item.id === id) {
@@ -49,73 +57,79 @@ const Cart = () => {
   };
 
   return (
-    <div className="fixed right-0 top-0 h-screen w-[400px] bg-[#FFF8F3] shadow-lg z-[60]">
-      <div className="flex flex-col h-full">
-        <div className="p-6 border-b">
-          <h2 className="text-2xl font-medium">Carrinho de Compras</h2>
-        </div>
+    <>
+      {/* Overlay escuro */}
+      <div className="fixed inset-0 bg-black/50 z-50" />
+      
+      {/* Carrinho */}
+      <div className="fixed right-0 top-0 h-screen w-[400px] bg-[#FFF8F3] shadow-lg z-[60]">
+        <div className="flex flex-col h-full">
+          <div className="p-6 border-b">
+            <h2 className="text-2xl font-medium">Carrinho de Compras</h2>
+          </div>
 
-        <div className="flex-1 overflow-auto p-6">
-          {items.map(item => (
-            <div key={item.id} className="flex gap-4 mb-6">
-              <img 
-                src={item.image} 
-                alt={item.name}
-                className="w-20 h-20 object-cover rounded-lg"
-              />
-              <div className="flex-1">
-                <h3 className="text-sm font-medium mb-2">{item.name}</h3>
-                <div className="flex justify-between items-center">
-                  <span className="text-red-500 font-medium">
-                    R$ {item.price.toFixed(2)}
-                  </span>
-                  <div className="flex items-center gap-3">
-                    <div className="flex flex-col">
+          <div className="flex-1 overflow-auto p-6">
+            {items.map(item => (
+              <div key={item.id} className="flex gap-4 mb-6">
+                <img 
+                  src={item.image} 
+                  alt={item.name}
+                  className="w-20 h-20 object-cover rounded-lg"
+                />
+                <div className="flex-1">
+                  <h3 className="text-sm font-medium mb-2">{item.name}</h3>
+                  <div className="flex justify-between items-center">
+                    <span className="text-red-500 font-medium">
+                      R$ {item.price.toFixed(2)}
+                    </span>
+                    <div className="flex items-center gap-3">
+                      <div className="flex flex-col">
+                        <button 
+                          onClick={() => updateQuantity(item.id, true)}
+                          className="p-1 hover:text-yellow-500 transition-colors"
+                        >
+                          <ChevronUp className="w-4 h-4" />
+                        </button>
+                        <span className="text-center">{item.quantity}</span>
+                        <button 
+                          onClick={() => updateQuantity(item.id, false)}
+                          className="p-1 hover:text-yellow-500 transition-colors"
+                        >
+                          <ChevronDown className="w-4 h-4" />
+                        </button>
+                      </div>
                       <button 
-                        onClick={() => updateQuantity(item.id, true)}
-                        className="p-1 hover:text-yellow-500 transition-colors"
+                        onClick={() => removeItem(item.id)}
+                        className="text-gray-400 hover:text-red-500 transition-colors"
                       >
-                        <ChevronUp className="w-4 h-4" />
-                      </button>
-                      <span className="text-center">{item.quantity}</span>
-                      <button 
-                        onClick={() => updateQuantity(item.id, false)}
-                        className="p-1 hover:text-yellow-500 transition-colors"
-                      >
-                        <ChevronDown className="w-4 h-4" />
+                        <Trash2 className="w-5 h-5" />
                       </button>
                     </div>
-                    <button 
-                      onClick={() => removeItem(item.id)}
-                      className="text-gray-400 hover:text-red-500 transition-colors"
-                    >
-                      <Trash2 className="w-5 h-5" />
-                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="p-6 border-t bg-white">
-          <div className="flex justify-between items-center mb-6">
-            <span className="text-lg font-medium">Subtotal:</span>
-            <span className="text-red-500 font-medium text-lg">
-              R$ {getSubtotal().toFixed(2)}
-            </span>
+            ))}
           </div>
-          <Button 
-            className={cn(
-              "w-full bg-red-600 hover:bg-red-700 text-white",
-              "py-6 text-base font-medium"
-            )}
-          >
-            FINALIZAR PEDIDO
-          </Button>
+
+          <div className="p-6 border-t bg-white">
+            <div className="flex justify-between items-center mb-6">
+              <span className="text-lg font-medium">Subtotal:</span>
+              <span className="text-red-500 font-medium text-lg">
+                R$ {getSubtotal().toFixed(2)}
+              </span>
+            </div>
+            <Button 
+              className={cn(
+                "w-full bg-red-600 hover:bg-red-700 text-white",
+                "py-6 text-base font-medium"
+              )}
+            >
+              FINALIZAR PEDIDO
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
