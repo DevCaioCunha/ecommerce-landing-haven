@@ -1,4 +1,6 @@
+
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Search, ShoppingCart, User, Flame } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -44,9 +46,9 @@ const Index = () => {
               <img src="/lovable-uploads/ffd35b60-49b7-42cf-9eb1-e51051e042f9.png" alt="Logo" className="h-8" />
             </div>
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-yellow-500 transition-colors">PRODUTOS</a>
-              <a href="#" className="text-gray-700 hover:text-yellow-500 transition-colors">MARCAS</a>
-              <a href="#" className="text-gray-700 hover:text-yellow-500 transition-colors">SOBRE NÓS</a>
+              <Link to="#" className="text-gray-700 hover:text-yellow-500 transition-colors">PRODUTOS</Link>
+              <Link to="/brands" className="text-gray-700 hover:text-yellow-500 transition-colors">MARCAS</Link>
+              <Link to="#" className="text-gray-700 hover:text-yellow-500 transition-colors">SOBRE NÓS</Link>
             </nav>
             <div className="flex items-center space-x-4">
               <button 
@@ -162,15 +164,15 @@ const Index = () => {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <img src="/lovable-uploads/ffd35b60-49b7-42cf-9eb1-e51051e042f9.png" alt="Logo" className="h-8" />
           <div className="flex space-x-8 text-sm text-gray-500">
-            <a href="#" className="hover:text-yellow-500 transition-colors">PRIVACIDADE</a>
-            <a href="#" className="hover:text-yellow-500 transition-colors">TERMOS E CONDIÇÕES</a>
-            <a href="#" className="hover:text-yellow-500 transition-colors">PROGRAMA CREATORS</a>
+            <Link to="#" className="hover:text-yellow-500 transition-colors">PRIVACIDADE</Link>
+            <Link to="#" className="hover:text-yellow-500 transition-colors">TERMOS E CONDIÇÕES</Link>
+            <Link to="#" className="hover:text-yellow-500 transition-colors">PROGRAMA CREATORS</Link>
           </div>
         </div>
       </footer>
 
       {/* Cart */}
-      {showCart && <Cart />}
+      {showCart && <Cart onClose={() => setShowCart(false)} />}
     </div>
   );
 };
