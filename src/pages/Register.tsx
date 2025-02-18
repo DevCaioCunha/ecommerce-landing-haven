@@ -5,7 +5,7 @@ import { Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-const Login = () => {
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -26,26 +26,31 @@ const Login = () => {
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-medium mb-2">MINHA CONTA</h1>
-            <p className="text-sm text-gray-600">👋 Olá novamente</p>
+            <p className="text-sm text-gray-600">👋 Olá! Crie sua conta</p>
           </div>
 
           <div className="bg-[#FFF1E6] rounded-2xl p-6 md:p-8">
             <div className="flex justify-between mb-8">
               <Link 
                 to="/login"
-                className="pb-2 text-red-500 border-b-2 border-red-500"
+                className="pb-2 text-gray-400 hover:text-red-500 transition-colors"
               >
                 LOG IN
               </Link>
               <Link 
                 to="/register"
-                className="pb-2 text-gray-400 hover:text-red-500 transition-colors"
+                className="pb-2 text-red-500 border-b-2 border-red-500"
               >
                 CADASTRO
               </Link>
             </div>
 
             <div className="space-y-4">
+              <Input
+                type="text"
+                placeholder="Nome completo"
+                className="bg-white border-0"
+              />
               <Input
                 type="email"
                 placeholder="E-mail"
@@ -66,27 +71,9 @@ const Login = () => {
                 </button>
               </div>
 
-              <div className="text-right">
-                <Link 
-                  to="/forgot-password" 
-                  className="text-xs text-gray-500 hover:text-yellow-500 transition-colors"
-                >
-                  Esqueceu sua senha?
-                </Link>
-              </div>
-
               <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium">
-                ENTRAR
+                CADASTRAR
               </Button>
-
-              <div className="text-center">
-                <Link 
-                  to="/register" 
-                  className="text-sm text-gray-500 hover:text-yellow-500 transition-colors"
-                >
-                  Não possuo cadastro
-                </Link>
-              </div>
             </div>
           </div>
 
@@ -104,4 +91,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
