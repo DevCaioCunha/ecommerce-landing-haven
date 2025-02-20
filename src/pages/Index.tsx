@@ -1,15 +1,13 @@
-
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Search, ShoppingCart, User, Flame } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Cart from "@/components/Cart";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [showCart, setShowCart] = useState(false);
+  const navigate = useNavigate();
 
   const products = [
     {
@@ -53,7 +51,7 @@ const Index = () => {
             <div className="flex items-center space-x-4">
               <button 
                 className="p-2 hover:text-yellow-500 transition-colors"
-                onClick={() => setShowCart(!showCart)}
+                onClick={() => navigate("/checkout")}
               >
                 <ShoppingCart className="h-5 w-5" />
               </button>
@@ -170,9 +168,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-
-      {/* Cart */}
-      {showCart && <Cart onClose={() => setShowCart(false)} />}
     </div>
   );
 };
