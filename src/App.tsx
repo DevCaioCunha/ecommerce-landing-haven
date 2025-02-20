@@ -12,6 +12,7 @@ import Terms from "./pages/Terms";
 import Brands from "./pages/Brands";
 import Checkout from "./pages/Checkout";
 import Address from "./pages/Address";
+import Payment from "./pages/Payment";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/address" element={<Address />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
