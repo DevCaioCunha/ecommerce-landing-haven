@@ -14,6 +14,7 @@ import Checkout from "./pages/Checkout";
 import Address from "./pages/Address";
 import Payment from "./pages/Payment";
 import OrderComplete from "./pages/OrderComplete";
+import OrderTracking from "./pages/OrderTracking";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/address" element={<Address />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/order-complete" element={<OrderComplete />} />
+          <Route path="/order-tracking" element={<OrderTracking />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
