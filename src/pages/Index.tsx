@@ -10,7 +10,6 @@ const Index = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const navigate = useNavigate();
 
-  // Produtos mockados - futuramente virão da API
   const searchResults = [
     {
       id: 1,
@@ -75,7 +74,6 @@ const Index = () => {
     e.preventDefault();
     if (searchQuery.trim()) {
       setHasSearched(true);
-      // Aqui futuramente será feita a chamada à API
     }
   };
 
@@ -106,7 +104,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
       <header className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -133,7 +130,6 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
       <section className="pt-32 pb-24 px-4">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <img src="/lovable-uploads/ffd35b60-49b7-42cf-9eb1-e51051e042f9.png" alt="Logo" className="h-16 mx-auto" />
@@ -156,7 +152,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Search Results Section */}
       {hasSearched && (
         <section className="py-16 px-4 bg-gray-50">
           <div className="max-w-7xl mx-auto">
@@ -167,7 +162,11 @@ const Index = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {searchResults.map((product) => (
-                <Card key={product.id} className="overflow-hidden group hover:shadow-lg transition-shadow">
+                <Card 
+                  key={product.id} 
+                  className="overflow-hidden group hover:shadow-lg transition-shadow cursor-pointer"
+                  onClick={() => navigate(`/product/${product.id}`)}
+                >
                   <div className="relative">
                     <div className="relative aspect-square">
                       <img 
@@ -181,7 +180,12 @@ const Index = () => {
                           <span className="text-xs font-medium">{product.tag}</span>
                         </div>
                       )}
-                      <button className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
+                      <button 
+                        className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                      >
                         <Search className="h-4 w-4" />
                       </button>
                     </div>
@@ -192,7 +196,12 @@ const Index = () => {
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="font-semibold text-lg">{product.price}</span>
-                        <Button className="bg-yellow-500 hover:bg-yellow-600 text-white">
+                        <Button 
+                          className="bg-yellow-500 hover:bg-yellow-600 text-white"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        >
                           COMPRAR
                         </Button>
                       </div>
@@ -205,7 +214,6 @@ const Index = () => {
         </section>
       )}
 
-      {/* Products Section */}
       {!hasSearched && (
         <section className="py-16 px-4 bg-gray-50">
           <div className="max-w-7xl mx-auto">
@@ -254,7 +262,6 @@ const Index = () => {
         </section>
       )}
 
-      {/* Creators Section */}
       <section className="py-16 px-4 bg-yellow-400">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl font-semibold mb-12 text-white">tedie creators</h2>
@@ -282,7 +289,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-8 px-4 border-t border-gray-100">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <img src="/lovable-uploads/ffd35b60-49b7-42cf-9eb1-e51051e042f9.png" alt="Logo" className="h-8" />
