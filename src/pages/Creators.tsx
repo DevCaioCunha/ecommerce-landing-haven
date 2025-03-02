@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Camera, Rocket, Star, Flame, Gift, PaintBrush, LightBulb, ChevronRight, Instagram, TrendingUp, CheckCircle } from "lucide-react";
+import { Camera, Rocket, Star, Flame, Gift, Paintbrush, Lightbulb, ChevronRight, Instagram, TrendingUp, CheckCircle } from "lucide-react";
 
 const Creators = () => {
   const [email, setEmail] = useState("");
@@ -115,7 +114,7 @@ const Creators = () => {
                 description: "Acesso a milhares de produtos exclusivos para oferecer ao seu público."
               },
               {
-                icon: <PaintBrush className="h-10 w-10 text-[#D946EF]" />,
+                icon: <Paintbrush className="h-10 w-10 text-[#D946EF]" />,
                 title: "Personalização total",
                 description: "Crie uma loja com a sua identidade e estilo, atraindo mais o seu público."
               },
@@ -125,7 +124,7 @@ const Creators = () => {
                 description: "Conecte facilmente com Instagram, TikTok e outras plataformas para alavancar suas vendas."
               },
               {
-                icon: <LightBulb className="h-10 w-10 text-[#D946EF]" />,
+                icon: <Lightbulb className="h-10 w-10 text-[#D946EF]" />,
                 title: "IA para crescimento",
                 description: "Nossa tecnologia ajuda a identificar tendências e oportunidades para sua audiência."
               }
