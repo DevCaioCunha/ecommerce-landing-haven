@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { 
   LayoutDashboard, 
   Package, 
@@ -15,6 +15,8 @@ interface SupplierSidebarProps {
 }
 
 export const SupplierSidebar = ({ open }: SupplierSidebarProps) => {
+  const location = useLocation();
+  
   const menuItems = [
     { icon: LayoutDashboard, name: "Dashboard", path: "/supplier-dashboard" },
     { icon: Package, name: "Produtos", path: "/supplier-products" },

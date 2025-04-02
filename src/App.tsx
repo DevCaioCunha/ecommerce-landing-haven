@@ -19,6 +19,12 @@ import ProductDetails from "./pages/ProductDetails";
 import Creators from "./pages/Creators";
 import UserProfile from "./pages/UserProfile";
 import SupplierDashboard from "./pages/SupplierDashboard";
+import SupplierProducts from "./pages/SupplierProducts";
+import SupplierOrders from "./pages/SupplierOrders";
+import SupplierDeliveries from "./pages/SupplierDeliveries";
+import SupplierReports from "./pages/SupplierReports";
+import SupplierCalendar from "./pages/SupplierCalendar";
+import SupplierSettings from "./pages/SupplierSettings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +51,12 @@ const App = () => (
           <Route path="/terms" element={<Terms />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
+          <Route path="/supplier-products" element={<SupplierProducts />} />
+          <Route path="/supplier-orders" element={<SupplierOrders />} />
+          <Route path="/supplier-deliveries" element={<SupplierDeliveries />} />
+          <Route path="/supplier-reports" element={<SupplierReports />} />
+          <Route path="/supplier-calendar" element={<SupplierCalendar />} />
+          <Route path="/supplier-settings" element={<SupplierSettings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
