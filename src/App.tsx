@@ -18,6 +18,7 @@ import OrderTracking from "./pages/OrderTracking";
 import ProductDetails from "./pages/ProductDetails";
 import Creators from "./pages/Creators";
 import UserProfile from "./pages/UserProfile";
+import SupplierDashboard from "./pages/SupplierDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
